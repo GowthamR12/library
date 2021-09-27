@@ -3,14 +3,6 @@
 	background-size: 2000px 1000px;
 	background-repeat: :no;
 }
-
-
-.button:hover{
-	background-color: floralwhite;
-  cursor: pointer;
-   
-
-}
 .img{
 	height: 50px;
 	width: 75px;
@@ -27,25 +19,22 @@ nav:last-child{
 	background-color: whitesmoke;
 }
 .select{
-	backgroun-color:green;
+	background-color: #333;
   width: 150px;
   height: 30px;
   padding: 5px;
-  color: green;
+  color: white;
 }
 .input{
 	height: 26px;
   opacity: 0.8;
+  border: 1px solid;
+  border-radius: 10px;
 }
-.button{
-	background-color: white;
 
-  color: green;
-  padding: 9px 30px;
-  text-align: center;
+.det a{
   text-decoration: none;
-  display: inline-block;
-  font-size: 11px;
+  color: white;
 }
 .topnav {
   background-color: #333;
@@ -97,25 +86,28 @@ tr:nth-child(odd){
 .email{
 	width: 200px;
 	height: 25px;
+  border-radius: 50px;
 	border-color: rebeccapurple;
 }
 .pass{
 	width: 200px;
 	height: 25px;
+  border-radius: 50px;
 	border: none;
 }
 .table{
   margin-top: 30px;
 }
 .fac{
-  
+  color: white;
   width: 150px;
   height: 200px;
-  background-color: rebeccapurple;
-   margin-top: 100px;
+  background-color: black;
+   position: relative;
+   top: 50px;
   padding: 250px;
   display: inline-block;
-  opacity: 0.85;
+  opacity: 0.8;
   border-radius: 25px;
  }
  .link{
@@ -123,20 +115,56 @@ tr:nth-child(odd){
   color: white;
   cursor: pointer;
  }
- .fact{
-  
-  width: 150px;
-  height: 200px;
-  background-color: rebeccapurple;
-  padding: 250px;
-  display: inline-block;
-  opacity: 0.85;
 
- }
   .fac:hover{
       transform: scale(1.1);
     }
  .search:hover{
   transform: scale(1.2);
  }
- 
+
+ .button{
+  width: 100px;
+  height: 35px;
+  border-radius: 50px;
+  background-color:  #333;
+  color: white;
+  cursor: pointer;
+ }
+ .button:hover{
+  background-color: darkgray;
+  color: black;
+}
+fieldset{
+border-radius: 50px;
+
+border-color: blue;
+
+
+}
+fieldset.add_books{
+  position: relative;
+top: -180px;
+right: 40px;
+border-radius: 50px;
+padding: 50px;
+border-color: blue;
+}
+
+.bu1{
+
+  background-image: linear-gradient("black","white");
+  width: 100px;
+  height: 35px;
+  border-radius:  50px;
+  cursor: pointer;
+}
+.bu1:hover{
+  background-color: black;
+  color: white;
+}
+.rec{
+  background-color: grey;
+  display: inline-block;
+  overflow: hidden;
+}

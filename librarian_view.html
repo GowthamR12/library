@@ -2,11 +2,21 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewpot" content="width=device-width,initial-scale=1.0">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title></title>
 </head>
 <body class="body">
+	<div class="topnav">
+	<div class="topnav dis">
+	<nav><a href="faculty_det.html" >FACULTY DETAILS</a></nav>
+	<nav><a href="stud_det.html">STUDENT DETAILS</a></nav>
+	<nav><a href="add_books.html">ADD BOOKS</a></nav>
+	<nav><a href="stud_book_issue.html">ISSUE STUDENTS</a></nav>
+	<nav><a href="fac_book_issue.html">ISSUE FACULLTIES</a></nav>
+	<nav><a href="index.html"><img src="images/cms.svg" class="img"></a></nav>
+</div>
+</div>
 	<center><div >
 	<form>
 		<br><select class="select">
@@ -30,6 +40,7 @@
 			<tr>
 				<th>Index</th>
 				<th>Date Of Accession</th>
+				<th>Accession No</th>
 				<th>Author</th>
 				<th>Title</th>
 				<th>Publisher</th>
@@ -38,11 +49,13 @@
 				<th>No of Pages</th>
 				<th>Price</th>	
 				<th>Quantity</th>
+				<th>SHELF</th>
 				
 			</tr>
 		<tr>
 			<td>1</td>
 			<td>13/12/1998</td>
+			<td>acc_no</td>
 			<td>author</td>
 			<td>Book_title</a></td>
 			<td>Publisher_of_book</td>
@@ -51,8 +64,10 @@
 			<td>No of Pages_Books</td>
 			<td>Books_Price</td>
 			<td>4</td>
-				<td><input type="checkbox" class="checkbox" value=""></td>
-				<td><button type="submit" class="button">VIEW BOOK DETAILS</button></td>
+			<td>5</td>
+				<td><input type="checkbox" name=""></td>
+			<td><button type="button" class="button">DELETE</button></td>
+	
 		</tr>
 		</table>
 
@@ -64,6 +79,7 @@
 			<tr>
 				<th>Index</th>
 				<th>Date Of Accession</th>
+				<th>Accession No</th>
 				<th>Author</th>
 				<th>Title</th>
 				<th>Publisher</th>
@@ -72,11 +88,13 @@
 				<th>No of Pages</th>
 				<th>Price</th>	
 				<th>Quantity</th>
+				<th>SHELF</th>
 				
 			</tr>
 		<tr>
 			<td>1</td>
 			<td>13/12/1998</td>
+			<td>acc_no</td>
 			<td>author</td>
 			<td>Book_title</a></td>
 			<td>Publisher_of_book</td>
@@ -85,14 +103,20 @@
 			<td>No of Pages_Books</td>
 			<td>Books_Price</td>
 			<td>4</td>
-				<td><input type="checkbox" class="checkbox" value=""></td>
-				<td><button type="submit" class="button">VIEW BOOK DETAILS</button></td>
+			<td>5</td>
+				<td><input type="checkbox" name=""></td>
+			<td><button type="button" class="button">DELETE</button></td>
 		</tr>
 		</table>
 </div>
 
 
+
 </center>
 
+
+
+</div>
+</center>
 </body>
 </html>
