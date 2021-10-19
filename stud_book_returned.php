@@ -1,6 +1,11 @@
 <?php
 include "database.php";
 session_start();
+	if(!isset($_SESSION["ID"]))
+	{
+		header('location:index.php?reg=Access Denied..');
+		exit();
+	}
 
 ?>
 <!DOCTYPE html>

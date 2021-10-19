@@ -20,7 +20,7 @@
 
 	<div class="topnav">
 	<div class="topnav dis">
-		<nav ><a href="logout.php"><button class="button" style="position: relative;top:-5px">LOG OUT</button></a></nav>
+		<nav ><a href="logout.php"><button class="button" style="position: relative;top:-5px;">LOG OUT</button></a></nav>
 	<nav><a href="faculty_det.php">FACULTY DETAILS</a></nav>
 	<nav><a href="stud_det.php">STUDENT DETAILS</a></nav>
 	<nav><a href="add_books.php">ADD BOOKS</a></nav>

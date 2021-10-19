@@ -1,7 +1,7 @@
 <?php
 	include "database.php";
 	session_start();
-		
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@
 			<option name="title">TITLE</option>
 		</select>
 		<input type="text" class="input" name="se" placeholder="Search Book By Here" size="125">
-		<button type="submit" class="button" name="buse">SEARCH</button>
+		<button type="submit" class="button" name="buse" >SEARCH</button>
 	
 	</form>
 

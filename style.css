@@ -47,12 +47,14 @@ nav:last-child{
   text-decoration: none;
   
 }
+
 .topnav {
   background-color: #333;
   overflow: hidden;
   display: block;
 
 }
+
 nav.logo{
   float: right;
   color: #f2f2f2;
@@ -111,12 +113,13 @@ tr:nth-child(odd){
 
 .email{
 	width: 200px;
-	height: 30px;
+	height: 20px;
   border-radius: 25px;
 	border-color: whitesmoke;
-  font-size: 20px;
+  font-size: 15px;
   color: whitesmoke;
   background-color: black;
+  padding: 10px;
 }
 .pass{
 	width: 200px;
@@ -145,7 +148,11 @@ tr:nth-child(odd){
   cursor: pointer;
  }
 
+.file-input{
 
+
+
+}
   .fac:hover{
       transform: scale(1.1);
     }

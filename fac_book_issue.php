@@ -55,6 +55,7 @@ session_start();
 			<center><div class="topnav">
 			<nav><a href="fac_book_receive.php" >Add Entry</a></nav>
 		<nav><a href="fac_book_returned.php">Returned Books</a></nav>
+		<nav><a href="librarian_view.php">Home</a></nav>
 		<nav><a href="index.php"><img src="images/cms.svg" class="img"></a></nav>
 	</div>
 <div>
