@@ -16,27 +16,32 @@ session_start();
 	<title></title>
 </head>
 <body class="body">
+	<a href="librarian_view.php"><button class="button">HOME</button></a>
 
 
 	<center><div>
-				<table>
-			<tr>
-				<th>No</th>
-				<th>ACCESSION NUMBER</th>
-				<th>RETURNED</th>
-				<th>FINE</th>
-			</tr>
+		
 	<?php
-		$sql="select * from stud_book_issue where uprn='{$_SESSION['STUDUPRN']}'";
+		$sql="select * from stud_book_issue where uprn='{$_SESSION['STUDUPRN']}' ";
 		$res=$db->query($sql);
 		$i=1;
 		if($res->num_rows>0)
-		{
+		{?>
+					<table>
+			<tr>
+				<th>No</th>
+				<th>ACCESSION NUMBER</th>
+				<th>BOOK TITLE</th>
+				<th>RETURNED</th>
+				<th>FINE</th>
+			</tr>
+			<?php
 			while($ro=$res->fetch_assoc())
 			{?>
 						<tr>
 				<td><?php echo $i;?></td>
 				<td><?php echo $ro["book_acc"]; ?></td>
+				<td><?php echo $ro["book_title"];?></td>
 				<td>
 					<?php 
 						if($ro["ret_stat"]==1)
@@ -55,6 +60,10 @@ session_start();
 			}
 
 		}
+		else
+	{
+		echo "<p style='font-size:50px;color:red;background-color:white;display:inline-block;padding:20px'>NO BOOKS</p>";
+	}
 
 	?>
 	

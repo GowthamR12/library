@@ -53,7 +53,7 @@ if(isset($_POST['send']))
 			<tr>
 			<td><?php echo $i;?></td>
 			<td><?php echo $ro["username"];?></td>
-			<td><input type="checkbox" name="chk" value="<?php echo $ro['fid']; ?>"></td>
+			<input type="hidden" name="chk" value="<?php echo $ro['fid']; ?>">
 			<td><button type="submit" name="send" class="button">view</button></td>
 		</tr>
 			

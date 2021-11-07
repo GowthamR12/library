@@ -26,7 +26,8 @@
 			$acc=$_POST["accno"];
 
 			$date=date("Y/m/d");
-			
+			$act = date('Y/m/d',strtotime($date . "+183 days"));
+
 			$jq="select books.title,bookacc.accno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid where accno='$acc'";
 			$rp=$db->query($jq);
 			if($rp->num_rows>0)
@@ -42,7 +43,8 @@
 					{
 						$ro=$res->fetch_assoc();
 						$fid=$ro["fid"];
-							$sql="insert into fac_book_issue(book_acc,fid,issue_date,email,book_title)  values('$acc','$fid','$date','$email','$title')";
+						$fname=$ro["username"];
+							$sql="insert into fac_book_issue(book_acc,fid,issue_date,actual,email,book_title,facname)  values('$acc','$fid','$date','$act','$email','$title','$fname')";
 							if($rest=$db->query($sql))
 							{
 								echo "success with fac_issue";
@@ -83,8 +85,8 @@
 				
 
 	?>
-<center><div class="fac">
-<fieldset>
+<center><div class="add">
+	<fieldset class="addfield" >
 	<legend>RECORD RETURNED BOOK DETAILS</legend>
 	<form action="" method="post">
 		ENTER EMAIL<input type="email" name="email" class="input">

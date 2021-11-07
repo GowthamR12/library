@@ -32,7 +32,21 @@ session_start();
 	<center><div style="margin-top:500px;background-color:black;opacity:0.8">
 		<font size="10px" color="white"><?php if(isset($_GET['mes'])){ echo $_GET["mes"];}?></font><br>
 		<form action="" method="post">
-		<button type="submit" class="button" name="pay">PAY</button>
+			<?php 
+			if(isset($_GET['mes']))
+			{
+				$rs=$_GET['mes'];
+				if($rs==0)
+				{
+					echo "<button type='submit' class='button' name='pay'>OK</button>";
+				}
+				else
+				{
+					echo "<button type='submit' class='button' name='pay'>PAY</button>";
+				}
+			}
+			?>
+		
 		</form>
 		</div>
 	</center>

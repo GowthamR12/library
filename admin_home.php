@@ -47,7 +47,7 @@
 			<label>ENTER PASSWORD</label><br>
 			<input type="Password" size=30 class="email" name="adpass"><br>
 			<br>
-			<button type="submit"class="bu1" name="adlog">SUBMIT</button><br>
+			<button type="submit" class="bu1" name="adlog">SUBMIT</button><br>
 			<br>
 
 			<a href="emailverlib.php" class="link">forgot password...?<u>click here<u></a>

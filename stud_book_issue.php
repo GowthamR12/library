@@ -86,17 +86,17 @@ session_start();
 										}
 										else
 										{
-											echo "can change bookacc";
+											echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>CANT CHANGE ACCESSION NUMBER </span></center>";
 										}
 								}
 								else
 								{
-									echo "cant update student";
+									echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>CAN'T UPDATE STUDENT</span></center>";
 								}
 						}
 						else
 						{
-							echo "cant update fine status";
+							echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>CAN'T UPDATE FINE STATUS </span></center>";
 						}
 					}
 				}
@@ -105,40 +105,57 @@ session_start();
 			
 
 ?>
-	<center><div class="topnav">
-		<nav><a href="stud_book_receive.php" >Add Entry</a></nav>
-		<nav><a href="stud_book_returned.php">Returned Books</a></nav>
-		<nav><a href="librarian_view.php">Home</a></nav>
-		<nav><a href="index.html"><img src="images/cms.svg" class="img"></a></nav>
-	</div>
-	</div>
+<center>	
+		<nav>
+	<input id="nav-toggle" type="checkbox">
+	
+	<ul class="links">
+		<li><a href="stud_report_set.php">REPORT</a></li>
+		<li><a href="stud_book_receive.php" >ADD ISSUING DETAILS</a></li>
+		<li><a href="librarian_view.php">HOME</a></li>
+	
+	</ul>
+	<label for="nav-toggle" class="icon-burger">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	</label>
+</nav>
+
+<br>
+<br><br><br><br>
 		<div>
 
 <div>
 	
-	<table>
+
+		<?php
+			$sql="select * from stud_book_issue where ret_stat=0";
+			$res=$db->query($sql);
+			if($res->num_rows>0)
+			{?>
+					<table>
 			<tr>
+				<th>Name</th>
 			<th>UPRN</th>
 			<th>Accession No</th>
 			<th>Issued Date</th>
 			<th>Actual Return Date</th>
 		</tr>
-		<?php
-			$sql="select * from stud_book_issue where ret_stat=0";
-			$res=$db->query($sql);
-			if($res->num_rows>0)
-			{
+
+
+				<?php
 				while($ro=$res->fetch_assoc())
 				{?> <form action="" method="post">
 					<tr>
+					<td><?php echo $ro["stname"];?></td>
 					<td><?php echo $ro["uprn"];?></td>
 					<td><?php echo $ro["book_acc"]; ?></td>
 					<td><?php echo $ro["issue_date"];?></td>
 					<td><?php echo $ro["actual"]; ?></td>
-					<td><input type="checkbox" name="chk" value="<?php echo $ro['sbid'];?>"></td>
+					<input type="hidden" name="chk" value="<?php echo $ro['sbid'];?>">
 					<td><button type="submit" class="button" name="return">Returned</button></td>
 					</tr>
-
 				</form>
 				<?php
 				}

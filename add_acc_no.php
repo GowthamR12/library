@@ -24,13 +24,13 @@ session_start();
 			{
 				$q="delete from books where bid='{$_SESSION['BID']}'";
 				$db->query($q);
-				header('Location:add_books.php');
+					header('Location:view_books_added.php');
 
 			}
 			else
 			{
 				echo "<center><span style='padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>NO ENTRY</span></center>";
-				header('Location:add_books.php');
+			
 			}
 		}
 	?>
@@ -55,7 +55,7 @@ session_start();
 			/*the above sql query executes properly, below if condition becomes true*/
 			if($db->query($sql))
 			{
-				header('Location:add_books.php');
+				header('Location:view_books_added.php');
 			}
 			else
 			{
@@ -105,7 +105,7 @@ session_start();
 				<td><?php echo $ro["accno"];?></td>
 				<td><?php echo $ro["isissued"];?></td>
 				<td><?php echo $ro["volume"];?></td>
-				<td><input type="checkbox" name="chk" value="<?php echo $ro['bcid'];?>"></td>
+				<input type="hidden" name="chk" value="<?php echo $ro['bcid'];?>">
 				<td><button type="submit" class="button" name="delete">DELETE</button></td>
 				</tr>
 			</form>
@@ -126,17 +126,18 @@ session_start();
 	</div>
 
 	
+
+<div style="display:inline-block;position: relative;right: -500px;top:-70px;margin-top:100px">
+	<form action="" method="post">
+	<button type="submit" class="button" name="deleteall" style="width:250px">DELETE ENTIRE BOOK</button>
+</form>
+</div>
 	<div style="background-color: black;position: relative;top:50px">
 	<form action="" method="post" >
 		<font color="white">ENTER ACCESSION_NO<input type="text" name="acc" class="input">
 			<font color="white">VOLUME<input type="number" name="bvol" class="input">
 		<button type="submit" class="button" name="add">ADD</button>
 	</form>
-</div>
-<div style="display:inline-block;position: relative;right: -500px;top:-70px">
-	<form action="" method="post">
-	<button type="submit" class="button" name="deleteall" style="width:250px">DELETE ENTIRE BOOK</button>
-</form>
 </div>
 
 </body>

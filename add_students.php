@@ -17,9 +17,10 @@ session_start();
 	<title></title>
 </head>
 <body class="body">
+	<a href="librarian_view.php"><button class="button">HOME</button></a>
 <center><form action="#" method="POST" enctype="multipart/form-data">
-	<div class="file-input">
-  <input type="file" name="excel">
+	<div class="file-input report">
+  <input type="file" name="excel" required="required">
  
 
 	<button type="submit" name="submit" class="button">Submit</button>
@@ -55,11 +56,11 @@ foreach($objExcel->getWorksheetIterator() as $worksheet)
 				$insertqry="INSERT INTO student(username,uprn,email,phoneno,password,role,crtdate,exprydate) VALUES ('$name','$uprn','$email','$phone','$pass','$grad','$date','$act')";
 				if($db->query($insertqry))
 				{
-					echo $row."-sucess";
+					$et=$row;
 				}
 				else
 				{
-					echo $row."-cant insert values";
+					echo "<p style='color:white;font-size:30px'>".$row."cant insert values<br></p>";
 				}
 			}
 			else if($grad=='pg')
@@ -68,14 +69,15 @@ foreach($objExcel->getWorksheetIterator() as $worksheet)
 				$insertqry="INSERT INTO student(username,uprn,email,phoneno,password,role,crtdate,exprydate) VALUES ('$name','$uprn','$email','$phone','$pass','$grad','$date','$actu')";
 				if($db->query($insertqry))
 				{
-					echo "<br>".$row."sucess<br>";
+					$et=$row;
 				}
 				else
 				{
-					echo "<br>".$row."Can't Inser Values<br>";
+					echo "<p style='color:white;font-size:30px'>".$row."cant insert values<br></p>";
 				}
 			}
 	}
+	echo "<div style='position:relative;top:200px;'><p style='color:white'>".$et."- RECORDS UPDATED</p>";
 }
 }
 ?>

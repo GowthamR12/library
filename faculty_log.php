@@ -2,11 +2,6 @@
 
 	include "database.php";
 	session_start();
-		if(!isset($_SESSION["ID"]))
-	{
-		header('location:index.php?reg=Access Denied..');
-		exit();
-	}
 
 ?>
 
@@ -86,7 +81,7 @@
 					<legend> FACULTY REGISTRATION </legend>
 					<br>
 				<label>ENTER USERNAME</label><br>
-				<input type="text"size="30" name="usr" class="email"><br><br>
+				<input type="text"size="30" name="usr" class="email" required="required"><br><br>
 				<label>ENTER EMAIL</label><br>
 				<input type="email" name="facemail" size="30" class="email"><br><br>
 				<label>ENTER PHONE</label><br>

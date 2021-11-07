@@ -53,8 +53,8 @@ if(!$db)
 				$mailst="select email from student where sid='$mailsid'";
 				$resmailst=$db->query($mailst);
 				if($resmailst->num_rows>0)
-				{$i=0;
-					while($i<1)
+				{
+					
 					{
 					$romailst=$resmailst->fetch_assoc();
 					 $towards       = $romailst["email"];
@@ -76,12 +76,62 @@ if(!$db)
                 {
                     echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>EMAIL DID NOT SENT</span></center>";
                 }
+                
+            }
+           }
+          }
+
+		}
+
+			$mailupfa="update fac_book_issue set maildiff=datediff(actual,issue_date) where ret_stat=0 and mailsent=0";
+		$db->query($mailupfa);
+		$mailsqlfa="select * from fac_book_issue where maildiff=0 and mailsent=0";
+		$remailsqfa=$db->query($mailsqlfa);
+		if($remailsqfa->num_rows>0)
+		{
+			while($romailstfa=$remailsqfa->fetch_assoc())
+			{
+				$mailsidfa=$romailstfa["fid"];
+				$mailbookacfa=$romailstfa["book_acc"];
+				$mailsbidfa=$romailstfa["fbid"];
+				$mailstfa="select email from faculty where fid='$mailsidfa'";
+				$resmailstfa=$db->query($mailstfa);
+				if($resmailstfa->num_rows>0)
+				{$i=0;
+					while($i<1)
+					{
+					$romailstfa=$resmailstfa->fetch_assoc();
+					 $towardsfa  = $romailstfa["email"];
+                $subjectwardfa  = 'Book Due';
+                $messagewardfa  = "<p>Your book-".$mailbookacfa." Final Return date Ends Today, Kindly Return your book to avoid Fine</p>";
+                $headerswardfa  = 'From: gowthamraghunathan@gmail.com' . "\r\n" .
+                'MIME-Version: 1.0' . "\r\n" .
+                'Content-type: text/html; charset=utf-8';
+
+
+                if(mail($towardsfa, $subjectwardfa, $messagewardfa, $headerswardfa))
+                {
+                	$mailupdsefa="update fac_book_issue set mailsent=1 where fbid='$mailsbidfa' and mailsent=0";
+                	$db->query($mailupdsefa);
+    
+                    echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>EMAIL SENT</span></center>";
+                }
+                else
+                {
+                    echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>EMAIL DID NOT SENT</span></center>";
+                }
                 $i++;
             }
            }
           }
 
 		}
+
+
+
+
+
+	
 
 	
 

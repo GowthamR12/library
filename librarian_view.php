@@ -18,20 +18,44 @@
 </head>
 <body class="body">
 
-	<div class="topnav">
-	<div class="topnav dis">
-		<nav ><a href="logout.php"><button class="button" style="position: relative;top:-5px;">LOG OUT</button></a></nav>
-	<nav><a href="faculty_det.php">FACULTY DETAILS</a></nav>
-	<nav><a href="stud_det.php">STUDENT DETAILS</a></nav>
-	<nav><a href="add_books.php">ADD BOOKS</a></nav>
-	<nav><a href="add_students.php">ADD STUDENTS</a></nav>
-	<nav><a href="stud_book_issue.php">ISSUE STUDENTS</a></nav>
-	<nav><a href="fac_book_issue.php">ISSUE FACULLTIES</a></nav>
-	<nav><a href="index.php"><img src="images/cms.svg" class="img"></a></nav>
-</div>
-</div>
+		<nav>
+			<input id="nav-toggle" type="checkbox">
 
+	
+	
+	<ul class="links">
+		<li style="position: relative;margin-right: 30px;"><a href="general_report.php">GENERAL|REPORT</a></li>
+		<li style="position: relative;margin-right: 30px;"><a href="faculty_det.php" >FACULTY|DETAILS</a></li>
+		<li style="position: relative;margin-right: 30px;"><a href="stud_det.php">STUDENT|DETAILS</a></li>
+		<li style="position: relative;margin-right: 30px;"><a href="add_books_sub.php">ADD|BOOKS</a></li>
+		<li style="position: relative;margin-right: 30px;"><a href="add_students.php">ADD|STUDENTS</a></li>
+		<li style="position: relative;margin-right: 30px;"><a href="stud_book_issue.php">ISSUE|STUDENTS</a></li>
+		<li style="position: relative;margin-right: 100px;justify-content: center;"><a href="fac_book_issue.php">ISSUE|FACULLTIES</a></li><br>
+
+		
+	</ul>
+	<label for="nav-toggle" class="icon-burger">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	</label>
+</nav>
+
+<br>
+<br>
 	<center><div >
+	<div style="display: inline-block;margin-top: 50px;margin-left: 1700px;margin-top: 100px;">
+	<a href="logout.php"><button class="button" style="position: relative;top:-5px;">LOG OUT</button></a>
+</div>
+<div>
+<div style="display: inline-block;margin-top: 100px;">
+		<form action="" method="post">
+		<br>
+		<br>
+		<button type="submit" class="button" name="viewse" style="position: relative;left:-100px;bottom:10pxpx">VIEW ALL</button>
+	</form>
+</div>
+<div style="display: inline-block;">
 	<form action="" method="post">
 		<br><select class="select">
 			<option name="accno">ACCESSION NO</option>
@@ -42,12 +66,9 @@
 		<button type="submit" class="button" name="butse">SEARCH</button>
 	
 	</form>
-	<form action="" method="post">
-		<br>
-		<br>
-		<button type="submit" class="button" name="viewse" style="position: relative;left:700px;bottom:70px">VIEW ALL</button>
-	</form>
-	<div>
+</div>
+
+	</div>
 		<br>
 		<br>
 		<table>
@@ -75,10 +96,10 @@
 			$res=$db->query($sql);
 			if($res->num_rows>0)
 			{
-				
+				$i=1;
 				while($ro=$res->fetch_assoc())
 				{
-					$i=0;
+					
 					$sq="select * from bookacc where accno='{$ro['accno']}' and isissued='no'";
 					$re=$db->query($sq);
 					if($re->num_rows>0)
@@ -94,7 +115,6 @@
 						$j=0;
 					}
 				?>
-
 						<tr>
 			<td><?php echo $i;?></td>
 			<td><?php echo $ro["dateofacc"];?></td>
@@ -105,9 +125,18 @@
 			<td><?php echo $ro["year"];?></td>
 			<td><?php echo $ro["nopages"];?></td>
 			<td><?php echo $ro["price"];?></td>
-			<td><?php echo $j;?></td>
+			<td><?php 
+				if($j==0){
+					 ?><a href="det.php?acc=<?php echo $ro['accno'];?>">ISSUED</a>
+
+			<?php
+		}
+			else{
+				echo $j;
+			}
+
+			?></td>
 			<td><?php echo $ro["shelfno"];?></td>
-			
 		</tr>
 		<?php $i++;
 
@@ -181,7 +210,17 @@
 			<td><?php echo $ro["year"];?></td>
 			<td><?php echo $ro["nopages"];?></td>
 			<td><?php echo $ro["price"];?></td>
-			<td><?php echo $j;?></td>
+			<td><?php 
+				if($j==0){
+					 ?><a href="det.php?acc=<?php echo $ro['accno'];?>">ISSUED</a>
+
+			<?php
+		}
+			else{
+				echo $j;
+			}
+
+			?></td>
 			<td><?php echo $ro["shelfno"];?></td>
 			<?php $i++;
 

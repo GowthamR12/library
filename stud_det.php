@@ -37,18 +37,20 @@ if(isset($_POST['send']))
 <div>
 	<center>
 		<caption>CLICK ON CHECKBOX TO VIEW BOOK DETAILS</caption>
-	<table border="1px" >
+
+			<?php
+	$sql="select * from student where isexp='active'";
+	$res=$db->query($sql);
+	if($res->num_rows>0)
+	{	$i=1;?>
+			<table border="1px" >
 		<tr>
 			<th>SI NUMBER</th>
 			<th>STUDENT NAME</th>
 			<th>UPRN</th>
 			<th>PHONE NUMBER</th>
 		</tr>
-			<?php
-	$sql="select * from student where isexp='active'";
-	$res=$db->query($sql);
-	if($res->num_rows>0)
-	{	$i=1;
+		<?php
 		while($ro=$res->fetch_assoc())
 		{ ?>
 			<form action="" method="post">
@@ -57,15 +59,15 @@ if(isset($_POST['send']))
 			<td><?php echo $ro["username"];?></td>
 			<td><?php echo $ro["uprn"];?></td>
 			<td><?php echo $ro["phoneno"];?></td>
-			<td><input type="checkbox" name="chk" value="<?php echo $ro['sid']; ?>"></td>
+			<input type="hidden" name="chk" value="<?php echo $ro['sid']; ?>">
 			<td><button type="submit" name="send" class="button">view</button></td>
 		</tr>
-			
+			</form>
 		<?php $i++;}
 	}
 	else
 	{
-		echo "NO ENTRY";
+		echo "<p style='font-size:50px'>NO ENTRY</p>";
 	}
 ?>
 		

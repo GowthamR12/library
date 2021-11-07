@@ -16,26 +16,27 @@ session_start();
 	<title></title>
 </head>
 <body class="body">
-	<?php
-		if(isset($_POST["acbu"]))
-			{
-				$_SESSION["BID"]=$_POST["chk"];
-				$sqla="select * from bookacc";
-				if($db->query($sqla))
-				{
-					header('Location:add_acc_no.php');
-					
-				}
-				else
-				{
-					echo "wrong";
-				}
-				
+		<nav>
+	<input id="nav-toggle" type="checkbox">
+	
+	<ul class="links">
+		<li><a href="librarian_view.php">HOME</a></li>
+		<li><a href="view_books_added.php">VIEW</a></li>
+		<li><a href="add_books_excel.php">UPLOAD</a></li>
+		
+	
+	</ul>
+	<label for="nav-toggle" class="icon-burger">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	</label>
+</nav>
+<br>
+<br><br>
 
-			}
-		?>
 
-	<?php
+		<?php
 		if(isset($_POST["buad"]))
 		{
 			$dtacc=$_POST["datacc"];
@@ -47,98 +48,45 @@ session_start();
 			$bp=$_POST["bprice"];
 			$shelf=$_POST["bshelf"];
 			
-			$sql="insert into books(dateofacc,author,title,publisher,year,nopages,price,shelfno) values('$dtacc','$author','$title','$pub','$year','$nopag','$bp','$shelf')";
+			$sql="insert into books(subid,dateofacc,author,title,publisher,year,nopages,price,shelfno) values('{$_SESSION['SUBID']}','$dtacc','$author','$title','$pub','$year','$nopag','$bp','$shelf')";
 			if($db->query($sql))
 			{
 				echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>SUCCESS</span></center>";
-				header('Location:librarian_view.php');
+				header('Location:view_books_added.php');
 				exit;
 			}
 			else
 			{
-				echo "<center><span style='  padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;display:inline-block;color:white;'>FAILED</span></center>";
+				echo "<center><span style='padding: 10px;background-color:black;opacity:0.8;position:relative;left: 10px;top:50px;display:inline-block;color:white;'>FAILED</span></center>";
 			}
 		}
+
+	
 	?>
 
-
-<center><div class="fac">
+<center><div class="faculty">
 	
 	<fieldset class="add_books">
 		<legend>ADD BOOK</legend>
 	<form action="" method="post">
 
 		DATE OF ACCESSION<input type="date" name="datacc" class="input"><br>
-		AUTHOR<input type="text" name="baut" class="input">
-		TITLE<input type="text" name="btit" class="input">
-		PUBLISHER<input type="text" name="bpub" class="input">
-		YEAR OF PUBLISHING<input type="text" name="byear" class="input">
+		AUTHOR<input type="text" name="baut" class="input"><br>
+		TITLE<br><input type="text" name="btit" class="input"><br>
+		PUBLISHER<input type="text" name="bpub" class="input"><br>
+		YEAR OF PUBLISHING<input type="text" name="byear" class="input"><br>
 		
-		NUMBER OF PAGES<input type="text" name="bno" class="input">
-		PRICE<input type="number" name="bprice" class="input">
+		NUMBER OF PAGES<input type="text" name="bno" class="input"><br>
+		PRICE<br><input type="number" name="bprice" class="input">
 		LOCATION<input type="number" name="bshelf" class="input"><br><br>
 		<button type="submit" class="bu1" name="buad">ADD BOOK</button>
+		
  	</form>
  	</fieldset>
  
 
 </div>
-
-	<div style="position: relative;top:50px">
-		<br>
-		<br>
-		<table>
-			<tr>
-				<th>Index</th>
-				<th>Date Of Accession</th>
-				<th>Author</th>
-				<th>Title</th>
-				<th>Publisher</th>
-				<th>Year</th>
-				<th>No of Pages</th>
-				<th>Price</th>	
-				<th>Location</th>
-				
-			</tr>
-			<?php
-				$sq="select * from books";
-				$re=$db->query($sq);
-				if($re->num_rows>0)
-				{	$i=1;
-					while($ro=$re->fetch_assoc())
-					{?>
-					<form action="" method="post"> 
-
-					<tr>
-					<td><?php echo $i;?></td>
-					<td><?php echo $ro["dateofacc"];?></td>
-					<td><?php echo $ro["author"];?></td>
-					<td><?php echo $ro["title"];?></td>
-					<td><?php echo $ro["publisher"];?></td>
-					<td><?php echo $ro["year"];?></td>
-					<td><?php echo $ro["nopages"];?></td>
-					<td><?php echo $ro["price"];?></td>
-					<td><?php echo $ro["shelfno"];?></td>
-					<td><input type="checkbox" name="chk" value="<?php echo $ro['bid'];?>">
-					<td><button type="submit" class="button" name="acbu" style="width:250px">ADD ACCESSION NO</button></td>
-	
-		</tr>
-	</form>
-	<?php $i++;
-
-					}
-				}
-				else
-				{
-					echo "EMPTY";
-				}
-			?>
-
-		</table>
-
-
-
-
+<br><br><br>
 </div>
 </body>
 </html>

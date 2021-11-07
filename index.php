@@ -13,18 +13,26 @@
 	<title></title>
 </head>
 <body class="body">
-	<div class="topnav">
-	<div class="topnav dis">
-	<nav ><a href="admin_home.php">LIBRARIAN</a></nav>
-	<nav ><a href="faculty_log.php">FACULTY</a></nav>
-	<nav ><a href="student_log.php">STUDENT</a></nav>
-	<nav class="logo"><a href="index.php"><img src="images/cms.svg" class="img"></a></nav>
-</div>
-</div>
-
-
-
-
+	<nav>
+	<input id="nav-toggle" type="checkbox">
+	
+	<ul class="links">
+		<li><a href="admin_home.php">LIBRARIAN</a></li>
+		<li><a href="faculty_log.php">FACULTY</a></li>
+		<li><a href="student_log.php">STUDENT</a></li>
+		<li ><a href="subject_search.php">SUBJECT</a></li>
+	
+	</ul>
+	<label for="nav-toggle" class="icon-burger">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	</label>
+</nav>
+		<br>
+		<br>
+		<br>
+		<br>
 		<br>
 <center><div>
 	<form action="" method="post">
@@ -33,13 +41,118 @@
 			<option name="author">AUTHOR</option>
 			<option name="title">TITLE</option>
 		</select>
-		<input type="text" class="input" name="se" placeholder="Search Book By Here" size="125">
+		<input type="text" class="input" name="se" placeholder="Search Books Here" size="125">
 		<button type="submit" class="button" name="buse" >SEARCH</button>
 	
 	</form>
+	<form action="" method="post">
+		<button type="submit" class="button" name="veall" >VIEW ALL</button>
+		</form>
 
 </div>
 </center>
+
+
+
+<br>
+<br>
+<div>
+	<center>
+	<table border="1px">
+	
+				<?php
+		if(isset($_POST["veall"]))
+		{	?>
+				
+
+	
+
+		<?php
+			$sql="select * from books"; 
+			$res=$db->query($sql);
+			if($res->num_rows>0)
+			{?>
+				<tr>
+			
+			<th>TITLE</th>
+			<th>AUTHOR</th>
+			<th>AVAILABLE</th>
+			<th>NON-AVAILABLE</th>
+			<th>LOCATION</th>
+		</tr>
+		<?php 
+				
+				while($ro=$res->fetch_assoc())
+				{?>
+						<tr>
+				
+				<td><?php echo $ro["title"];?></td>
+				<td><?php echo $ro["author"];?></td>
+				<td><?php 
+				$sqa="select * from bookacc where bfid='{$ro['bid']}'";
+					$rea=$db->query($sqa);
+					if($rea->num_rows>0)
+					{
+						while($roa=$rea->fetch_assoc())
+						{
+							if($roa["isissued"]=='no')
+								{
+						
+					echo "<br>".$roa["accno"];
+				}
+					}
+				}
+				
+				else
+				{
+					echo "---";
+				}
+
+			?></td>
+				<td><?php 
+				$sqa="select * from bookacc where bfid='{$ro['bid']}'";
+					$rea=$db->query($sqa);
+					if($rea->num_rows>0)
+					{
+						while($roa=$rea->fetch_assoc())
+						{
+							if($roa["isissued"]=='yes')
+								{
+						
+					echo "<br>".$roa["accno"];
+				}
+					}
+				}
+				
+				else
+				{
+					echo "---";
+				}
+
+			?>
+					
+			
+				
+				<td><?php echo $ro["shelfno"];?></td>
+				</tr>
+		<?php
+		} 
+		
+	}
+	else
+	{
+		echo "<font color='red' size='5px' style='background-color:white;padding:10px'><strong>NO RESULTS FOUND.....!</strong></font>";
+	}
+}
+?>
+	</table>
+</center>
+</div>
+
+
+
+<br>
+<br>
 <br>
 <br>
 <div>
@@ -49,50 +162,64 @@
 				<?php
 		if(isset($_POST["buse"]))
 		{	?>
-				<tr>
-			<th>ACCESSION NUMBER</th>
-			<th>TITLE</th>
-			<th>AUTHOR</th>
-			<th>AVAILABLE QUANTITY</th>
-			<th>LOCATION</th>
-		</tr><?php
-			$sql="select books.shelfno,books.author,books.title,bookacc.accno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid  where author like '%{$_POST['se']}%' or accno like '%{$_POST['se']}%' or title like '%{$_POST['se']}%'"; 
+				
+	
+
+		<?php
+			$sql="select books.title,books.author,books.bid,bookacc.accno,books.shelfno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid where  author like '%{$_POST['se']}%'  or title like '%{$_POST['se']}%' or accno like '%{$_POST['se']}%'"; 
 			$res=$db->query($sql);
 			if($res->num_rows>0)
-			{
+			{?>
+				<tr>
+			
+			<th>TITLE</th>
+			<th>AUTHOR</th>
+			<th>AVAILABLE</th>
+			<th>NON-AVAILABLE</th>
+			<th>LOCATION</th>
+		</tr>
+<?php 
 				
 				while($ro=$res->fetch_assoc())
-				{
-
-					$sq="select * from bookacc where accno='{$ro['accno']}' and isissued='no'";
-					$re=$db->query($sq);
-					if($re->num_rows>0)
-					{
-						$i=0;
-						while($rot=$re->fetch_assoc())
-						{
-							$i++;
-						}
-					}
-					else
-					{
-						$i=0;
-					}
-				?>
-					
-				<tr>
-				<td><?php echo $ro["accno"];?></td>
+				{?>
+						<tr>
+				
 				<td><?php echo $ro["title"];?></td>
 				<td><?php echo $ro["author"];?></td>
-				<td><?php echo $i;?></td>
+				<td><?php 
+				if($ro["isissued"]=='no')
+				{
+					echo $ro["accno"];
+				}
+				else
+				{
+					echo "---";
+				}
+
+			?></td>
+				<td><?php if($ro["isissued"]=='yes')
+				{
+					echo $ro["accno"];
+				}
+				else
+				{
+					echo "---";
+				}
+
+			?>
+					
+			
+				
 				<td><?php echo $ro["shelfno"];?></td>
 				</tr>
-		<?php 
-		}
+		<?php
+		} 
+		
 	}
 	else
 	{
-		echo "<font color='red' size='5px'><strong>NO RESULTS FOUND.....!</strong></font>";
+		
+		echo "<font color='red' size='5px' style='background-color:white;padding:10px'><strong>NO RESULTS FOUND.....!</strong></font>";
 	}
 }
 ?>

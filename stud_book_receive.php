@@ -16,9 +16,13 @@ session_start();
 	<title></title>
 </head>
 <body class="body">
+	<a href="librarian_view.php"><button class="button">HOME</button></a>
+
+	<br>
+	<br>
+		<div>
 	<?php
 
-			//remember to add returned status to 0/1 in stud_book_issue table
 
 		if(isset($_POST["sub"]))
 		{
@@ -28,14 +32,16 @@ session_start();
 			$date=date("Y/m/d");
 			$act = date('Y/m/d',strtotime($date . "+14 days"));
 			
-			$jq="select * from bookacc where accno='$acc'";
-			$rp=$db->query($jq);
-			if($rp->num_rows>0)
-			{
-
+		
+					$jq="select books.title,bookacc.accno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid where accno='$acc'";
+					$rp=$db->query($jq);
+					if($rp->num_rows>0)
+					{
 				$rop=$rp->fetch_assoc();
+				$tit=$rop["title"];
 				if($rop["isissued"]=='no')
 				{
+
 					$sqla="select * from student where uprn='$uprn'";
 					$res=$db->query($sqla);
 					if($res->num_rows>0)
@@ -44,9 +50,11 @@ session_start();
 						$sid=$ro["sid"];
 						$role=$ro["role"];
 						$tot=$ro["tot"];
+						$stname=$ro["username"];
 						if(($role=='ug' and $tot<3) or ($role=='pg' and $tot<7))
 						{
-							$sql="insert into stud_book_issue(sid,uprn,issue_date,actual,book_acc)  values('$sid','$uprn','$date','$act','$acc')";
+					
+							$sql="insert into stud_book_issue(stname,sid,uprn,issue_date,actual,book_acc,book_title)  values('$stname','$sid','$uprn','$date','$act','$acc','$tit')";
 							if($rest=$db->query($sql))
 							{
 								echo "success with stud_issue";
@@ -93,8 +101,9 @@ session_start();
 
 		}
 	?>
-	<center><div class="fac">
-	<fieldset>
+	<center>
+		<div class="add">
+	<fieldset class="addfield" >
 		<legend>RECORD RETURNED BOOK DETAILS</legend>
 	<form action="" method="post">
 		Enter UPRN<input type="text" name="uprn" class="input">
@@ -102,6 +111,7 @@ session_start();
 		<button type="submit" class="button" name="sub">SUBMIT</button>
 	</form>
 </fieldset>
+
 
 </div>
 
