@@ -18,8 +18,9 @@
 		if(isset($_POST["adlog"]))
 		{
 			/*selecting values from admin table in the library database*/
-
-			$sql="select * from admin where email='{$_POST["ademail"]}' and password='{$_POST['adpass']}'";
+			$pas=$_POST["adpass"];
+			$pass=md5($pas);
+			$sql="select * from admin where email='{$_POST["ademail"]}' and password='$pass'";
 
 			/*to make understand the php, the above " select * from" code is mysql query*/
 			
@@ -50,7 +51,7 @@
 			<button type="submit" class="bu1" name="adlog">SUBMIT</button><br>
 			<br>
 
-			<a href="emailverlib.php" class="link">forgot password...?<u>click here<u></a>
+		
 
 		</font>
 		</fieldset>

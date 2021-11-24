@@ -24,6 +24,7 @@
 	
 	
 	<ul class="links">
+		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam</a></li>
 		<li style="position: relative;margin-right: 30px;"><a href="general_report.php">GENERAL|REPORT</a></li>
 		<li style="position: relative;margin-right: 30px;"><a href="faculty_det.php" >FACULTY|DETAILS</a></li>
 		<li style="position: relative;margin-right: 30px;"><a href="stud_det.php">STUDENT|DETAILS</a></li>
@@ -45,6 +46,7 @@
 <br>
 	<center><div >
 	<div style="display: inline-block;margin-top: 50px;margin-left: 1700px;margin-top: 100px;">
+		<br>
 	<a href="logout.php"><button class="button" style="position: relative;top:-5px;">LOG OUT</button></a>
 </div>
 <div>

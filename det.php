@@ -7,6 +7,8 @@ session_start();
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="body">
+		
+		<a href="librarian_view.php"><button class="button">HOME</button></a>
 	<?php
 
 		$sql="select * from stud_book_issue where book_acc='{$_GET['acc']}' and ret_stat=0";

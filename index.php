@@ -17,10 +17,13 @@
 	<input id="nav-toggle" type="checkbox">
 	
 	<ul class="links">
+		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam</a></li>
 		<li><a href="admin_home.php">LIBRARIAN</a></li>
 		<li><a href="faculty_log.php">FACULTY</a></li>
 		<li><a href="student_log.php">STUDENT</a></li>
 		<li ><a href="subject_search.php">SUBJECT</a></li>
+		
+
 	
 	</ul>
 	<label for="nav-toggle" class="icon-burger">
@@ -30,6 +33,11 @@
 	</label>
 </nav>
 		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+			<br>
 		<br>
 		<br>
 		<br>
@@ -62,12 +70,9 @@
 	
 				<?php
 		if(isset($_POST["veall"]))
-		{	?>
-				
+		{	
 
-	
 
-		<?php
 			$sql="select * from books"; 
 			$res=$db->query($sql);
 			if($res->num_rows>0)
@@ -161,11 +166,12 @@
 	
 				<?php
 		if(isset($_POST["buse"]))
-		{	?>
+		{	
 				
-	
-
-		<?php
+	    
+			if($_POST['se']!=null)
+			{
+			
 			$sql="select books.title,books.author,books.bid,bookacc.accno,books.shelfno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid where  author like '%{$_POST['se']}%'  or title like '%{$_POST['se']}%' or accno like '%{$_POST['se']}%'"; 
 			$res=$db->query($sql);
 			if($res->num_rows>0)
@@ -216,12 +222,15 @@
 		} 
 		
 	}
+}
 	else
 	{
 		
 		echo "<font color='red' size='5px' style='background-color:white;padding:10px'><strong>NO RESULTS FOUND.....!</strong></font>";
 	}
 }
+
+
 ?>
 	</table>
 </center>

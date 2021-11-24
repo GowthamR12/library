@@ -68,6 +68,10 @@ session_start();
 			
 	<br>
 	<br><br><br>
+	<br>
+		<br>
+		<br>
+		<br>
 	<br><br>
 		<?php
 			$sql="select * from fac_book_issue where ret_stat=0";

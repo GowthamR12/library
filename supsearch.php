@@ -34,6 +34,10 @@
 		<br>
 		<br>
 		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 <center><div>
 	<form action="" method="post">
 		<br><select class="select">
@@ -45,12 +49,92 @@
 		<button type="submit" class="button" name="buse" >SEARCH</button>
 	
 	</form>
-	<form action="" method="post">
-		<button type="submit" class="button" name="veall" >VIEW ALL</button>
-		</form>
+
 
 </div>
 </center>
+
+
+<br>
+<br>
+<br>
+<br>
+<div style="background-color: white;opacity:0.8">
+<div>
+	<center>
+		
+	<table border="1px">
+	
+				<?php
+		if(isset($_POST["buse"]))
+		{	
+			?>
+			<h1 style="color:red">SEARCH RESULTS</h1>
+				
+	
+
+		<?php
+			$sql="select books.title,books.author,books.bid,bookacc.accno,books.shelfno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid where subid='{$_SESSION['SUBJECT']}' and (author like '%{$_POST['se']}%'  or title like '%{$_POST['se']}%' or accno like '%{$_POST['se']}%')"; 
+			$res=$db->query($sql);
+			if($res->num_rows>0)
+			{?>
+				<tr>
+			
+			<th>TITLE</th>
+			<th>AUTHOR</th>
+			<th>AVAILABLE</th>
+			<th>NON-AVAILABLE</th>
+			<th>LOCATION</th>
+		</tr>
+<?php 
+				
+				while($ro=$res->fetch_assoc())
+				{?>
+						<tr>
+				
+				<td><?php echo $ro["title"];?></td>
+				<td><?php echo $ro["author"];?></td>
+				<td><?php 
+				if($ro["isissued"]=='no')
+				{
+					echo $ro["accno"];
+				}
+				else
+				{
+					echo "---";
+				}
+
+			?></td>
+				<td><?php if($ro["isissued"]=='yes')
+				{
+					echo $ro["accno"];
+				}
+				else
+				{
+					echo "---";
+				}
+
+			?>
+					
+			
+				
+				<td><?php echo $ro["shelfno"];?></td>
+				</tr>
+		<?php
+		} 
+		
+	}
+	else
+	{
+		
+		echo "<font color='red' size='5px' style='background-color:white;padding:10px'><strong>NO RESULTS FOUND.....!</strong></font>";
+	}
+}
+?>
+	</table>
+</center>
+</div>
+
 
 
 
@@ -58,11 +142,11 @@
 <br>
 <div>
 	<center>
+		<h1 style="color:red">Books</h1>
 	<table border="1px">
 	
-				<?php
-		if(isset($_POST["veall"]))
-		{	?>
+				
+		
 				
 
 	
@@ -143,89 +227,17 @@
 	{
 		echo "<font color='red' size='5px' style='background-color:white;padding:10px'><strong>NO RESULTS FOUND.....!</strong></font>";
 	}
-}
+
 ?>
 	</table>
 </center>
 </div>
-
-
-
 <br>
 <br>
-<br>
-<br>
-<div>
-	<center>
-	<table border="1px">
-	
-				<?php
-		if(isset($_POST["buse"]))
-		{	?>
-				
-	
-
-		<?php
-			$sql="select books.title,books.author,books.bid,bookacc.accno,books.shelfno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid where subid='{$_SESSION['SUBJECT']}' and (author like '%{$_POST['se']}%'  or title like '%{$_POST['se']}%' or accno like '%{$_POST['se']}%')"; 
-			$res=$db->query($sql);
-			if($res->num_rows>0)
-			{?>
-				<tr>
-			
-			<th>TITLE</th>
-			<th>AUTHOR</th>
-			<th>AVAILABLE</th>
-			<th>NON-AVAILABLE</th>
-			<th>LOCATION</th>
-		</tr>
-<?php 
-				
-				while($ro=$res->fetch_assoc())
-				{?>
-						<tr>
-				
-				<td><?php echo $ro["title"];?></td>
-				<td><?php echo $ro["author"];?></td>
-				<td><?php 
-				if($ro["isissued"]=='no')
-				{
-					echo $ro["accno"];
-				}
-				else
-				{
-					echo "---";
-				}
-
-			?></td>
-				<td><?php if($ro["isissued"]=='yes')
-				{
-					echo $ro["accno"];
-				}
-				else
-				{
-					echo "---";
-				}
-
-			?>
-					
-			
-				
-				<td><?php echo $ro["shelfno"];?></td>
-				</tr>
-		<?php
-		} 
-		
-	}
-	else
-	{
-		
-		echo "<font color='red' size='5px' style='background-color:white;padding:10px'><strong>NO RESULTS FOUND.....!</strong></font>";
-	}
-}
-?>
-	</table>
-</center>
 </div>
+
+
+
 
 <center><span style='  padding: 10px;color:#333333;font-family: sans-serif;font-weight: bold;font-size: 20px;position:relative;left: -250px;display:inline-block;'><?php
 
@@ -233,7 +245,7 @@
  		{
  			echo $_GET['reg'];
  		} 
-?></span></center>"
+?></span></center>
 
 </body>
 </html>

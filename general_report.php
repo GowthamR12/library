@@ -10,6 +10,7 @@ session_start();
 	<title></title>
 </head>
 <body class="body">
+		<a href="librarian_view.php"><button class="button">HOME</button></a>
 	<div style="background-color:white;opacity:0.9">
 	<?php
 		$sql="select count(*) as count from books inner join bookacc on books.bid=bookacc.bfid";

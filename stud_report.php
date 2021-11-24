@@ -107,9 +107,24 @@ session_start();
 			
 		}
 
+		$sql2="select fine_status from stud_book_issue ((issue_date between '$fro' and '$to'))";
+		$res2=$db->query($sql);
+		$sum=0;
+		if($res2->num_rows>0)
+		{
+			while($ro2=$res2->fetch_assoc())
+			{
+				$sum+=$ro2['fine_status'];
+			}
+			$html.="<br><br><p>Total Fine Collected</span><br><p>".$sum."</p>";
+		}
+		else{
+			$html.="data not found";
+		}
+
 		
 
-
+		
 
 
 			$mpdf=new \Mpdf\Mpdf();

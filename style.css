@@ -3,6 +3,11 @@
 	background-size: 2000px 1000px;
 	background-repeat: :no;
 }
+.logo-1{
+  position: fixed;
+  left: 12px;
+  align-self: center;
+}
 .img{
   position: relative;
   top: -20px;
@@ -120,7 +125,7 @@ tr:nth-child(odd){
 
 input[type=file]::file-selector-button {
   border: 5px;
-  font-size: 40px;
+  hei
   padding: .2em .4em;
   border-radius: .2em;
   background-color: white;
@@ -291,7 +296,7 @@ nav {
   top: 0;
   font-family: 'Montserrat', sans-serif;
   padding: 0 5%;
-  height: 100px;
+  height: 150px;
   background-color: black;
 }
 
