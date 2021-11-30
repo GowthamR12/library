@@ -13,6 +13,7 @@ session_start();
 	<title></title>
 </head>
 <body class="body">
+	<a href="librarian_view.php"><button class="button">HOME</button></a>
 	<center><div class="report">
 	<form action="fac_report.php" target="_blank" method="post">
 		<h1>GENERATE REPORT</h1>

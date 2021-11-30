@@ -74,6 +74,7 @@ session_start();
 					<td>SI.NO</td>
 					<td>UPRN</td>
 					<td>TITLE</td>
+					
 					<td>FINE</td>
 				</tr>";
 				$i=1;

@@ -17,6 +17,7 @@
 	<input id="nav-toggle" type="checkbox">
 	
 	<ul class="links">
+		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam</a></li>
 		<li><a href="admin_home.php">LIBRARIAN</a></li>
 		<li><a href="faculty_log.php">FACULTY</a></li>
 		<li><a href="student_log.php">STUDENT</a></li>
@@ -48,9 +49,14 @@
 		
 		if(isset($_POST["submit"]))
 		{
+			
+
+
 			$_SESSION["SUBJECT"]=$_POST["chk"];
 			header('location:supsearch.php');
-		} 
+		
+	}
+		
     
 
 	?>
@@ -68,7 +74,9 @@
    <?php 
    if(isset($_POST['sub']))
    {
-
+ 
+   	if($_POST['sea']!=null)
+	{
    	$sql="select * from subject where subject like '%{$_POST['sea']}%'";
    	$res=$db->query($sql);
    	if($res->num_rows>0)
@@ -92,14 +100,18 @@
    		<?php
    	}
    	}
-   	else{?>
-   		<div style="height: 500px;background-color:white;opacity:0.8">
-   			<p> No Results Found....!</p>
-   		</div>
-   		<?php
-
+   	else
+   	{
+   		echo "<font color='red' size='5px' style='background-color:white;padding:5px'><strong>NO BOOKS</strong></font>";
    	}
+
+   	
    }
+   else
+   {
+   		echo "<font color='red' size='5px' style='background-color:white;padding:5px'><strong>NO BOOKS</strong></font>";
+   }
+}
 
 
    	?>
@@ -107,6 +119,8 @@
 	<center>
 		<div style="height: 2000px;background-color:white;opacity:0.8">
 			<center><h1 style="color: blck;background-color: white;opacity: 0.8;padding: 10px;">Choose Subject</h1></center>
+   
+
    <?php 
 
    	$sql="select * from subject";
@@ -127,7 +141,9 @@
    	
    		<?php
    	}
-   	}
+   }
+  
+   	
 
 
 

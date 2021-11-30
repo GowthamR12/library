@@ -17,6 +17,7 @@
 	<input id="nav-toggle" type="checkbox">
 	
 	<ul class="links">
+		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam</a></li>
 		<li><a href="admin_home.php">LIBRARIAN</a></li>
 		<li><a href="faculty_log.php">FACULTY</a></li>
 		<li><a href="student_log.php">STUDENT</a></li>
