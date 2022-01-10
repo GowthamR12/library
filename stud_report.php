@@ -38,20 +38,24 @@ session_start();
 		$res=$db->query($sql);
 		if($res->num_rows>0)
 		{
-			$html="<div><table style='border-collapse:collapse;width:50%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND RETURNED</b></CAPTION>";
-				$html.="<tr >
-					<td>SI.NO</td>
-					<td>UPRN</td>
-					<td>TITLE</td>
+			$html="<div><table border='1' style='border-collapse:collapse;width:100%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND RETURNED</b></CAPTION>";
+				$html.="<tr>
+					<th>SI.NO</th>
+					<th>UPRN</th>
+					<th>NAME</th>
+					<th>TITLE</th>
+					<th>SFA</th>
 				</tr>";
 				$i=1;
 				while($ro=$res->fetch_assoc())
 				{
 				
 					$html.="<tr>
-					<td>".$i."</td>
-					<td >".$ro['uprn']."</td>
-					<td>".$ro['book_title']."</td>
+					<td style='text-align:center'>".$i."</td>
+					<td style='text-align:center'>".$ro['uprn']."</td>
+					<td style='text-align:center'>".$ro['stname']."</td>
+					<td style='text-align:center'>".$ro['book_title']."</td>
+					<td style='text-align:center'>".$ro['book_acc']."</td>
 				</tr>";
 				$i++;
 
@@ -62,20 +66,24 @@ session_start();
 
 		}
 		else{
-			$html = "data not found</br>";
+			$html = "No returned Books</br>";
 		}
+
+
+		$html.="<br>-----------------------------------------------------------------------------------------------------------------------------------------------------";
 
 		$sql1="select * from stud_book_issue where ((issue_date between '$fro' and '$to') ) and ret_stat=0 ";
 		$res1=$db->query($sql1);
 		if($res1->num_rows>0)
 		{
-			$html.="<br><div><table style='border-collapse:collapse;width:50%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND NOT RETURNED</b></CAPTION>";
-				$html.="<tr >
-					<td>SI.NO</td>
-					<td>UPRN</td>
-					<td>TITLE</td>
-					
-					<td>FINE</td>
+			$html.="<br><div><table border='1' style='border-collapse:collapse;width:100%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND NOT RETURNED</b></CAPTION>";
+				$html.="<tr>
+					<th>SI.NO</th>
+					<th>UPRN</th>
+					<th>NAME</th>
+					<th>TITLE</th>
+					<th>SFA.NO</th>
+					<th>FINE</th>
 				</tr>";
 				$i=1;
 				while($rot=$res1->fetch_assoc())
@@ -90,10 +98,12 @@ session_start();
 					}
 				
 					$html.="<tr>
-					<td>".$i."</td>
-					<td >".$rot['uprn']."</td>
-					<td>".$rot['book_title']."</td>
-					<td>".$fine."</td>
+					<td style='text-align:center'>".$i."</td>
+					<td style='text-align:center'>".$rot['uprn']."</td>
+					<td style='text-align:center'>".$rot['stname']."</td>
+					<td style='text-align:center'>".$rot['book_title']."</td>
+					<td style='text-align:center'>".$rot['book_acc']."</td>
+					<td style='text-align:center'>".$fine."</td>
 				</tr>";
 				$i++;
 
@@ -108,6 +118,8 @@ session_start();
 			
 		}
 
+		$html.="<br>-----------------------------------------------------------------------------------------------------------------------------------------------------";
+
 		$sql2="select fine_status from stud_book_issue ((issue_date between '$fro' and '$to'))";
 		$res2=$db->query($sql);
 		$sum=0;
@@ -120,7 +132,7 @@ session_start();
 			$html.="<br><br><p>Total Fine Collected</span><br><p>".$sum."</p>";
 		}
 		else{
-			$html.="data not found";
+			$html.="No Fine";
 		}
 
 		

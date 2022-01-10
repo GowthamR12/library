@@ -20,16 +20,19 @@
 			/*selecting values from admin table in the library database*/
 			$pas=$_POST["adpass"];
 			$pass=md5($pas);
-			$sql="select * from admin where email='{$_POST["ademail"]}' and password='$pass'";
+
+			$sql = "select * from admin where email='{$_POST["ademail"]}' and password='$pass'";
 
 			/*to make understand the php, the above " select * from" code is mysql query*/
 			
+			/*reseultset are formed*/
 			$res = $db->query($sql);
 			
 
 			if($res->num_rows>0)
 			{
 				$ro=$res->fetch_assoc();
+
 				$_SESSION["ID"]=$ro["aid"];
 				$_SESSION["EMAIL"]=$ro["email"];
 				echo "<script>window.open('librarian_view.php','_self')</script>";

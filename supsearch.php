@@ -22,7 +22,6 @@
 		<li><a href="faculty_log.php">FACULTY</a></li>
 		<li><a href="student_log.php">STUDENT</a></li>
 		<li ><a style="float:left" href="index.php">HOME</a></li>
-	
 	</ul>
 	<label for="nav-toggle" class="icon-burger">
 		<div class="line"></div>
@@ -116,9 +115,6 @@
 				}
 
 			?>
-					
-			
-				
 				<td><?php echo $ro["shelfno"];?></td>
 				</tr>
 		<?php

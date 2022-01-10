@@ -15,11 +15,15 @@ session_start();
 
 
 	<?php
+	    /*checks for not null variables*/
 		if(isset($_POST["login"]))
 		{	
 		
 			$sqla="select * from student where uprn='{$_POST["uprn"]}' and password='{$_POST["pwd"]}' and isexp='active'";
-			$rest=$db->query($sqla);
+
+			/*db is a variable that stores connection from database*/
+			$rest = $db->query($sqla);
+
 			if($rest->num_rows>0)
 			{	
 				$ros=$rest->fetch_assoc();

@@ -38,20 +38,24 @@ session_start();
 		$res=$db->query($sql);
 		if($res->num_rows>0)
 		{
-			$html="<div><table style='border-collapse:collapse;width:50%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND RETURNED</b></CAPTION>";
+			$html="<div><table border='1' style='border-collapse:collapse;width:100%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND RETURNED</b></CAPTION>";
 				$html.="<tr >
-					<td>SI.NO</td>
-					<td>UPRN</td>
-					<td>TITLE</td>
+					<th>SI.NO</th>
+					<th>EMAIL</th>
+					<th>NAME</th>
+					<th>TITLE</th>
+					<th>SFA.No</th>
 				</tr>";
 				$i=1;
 				while($ro=$res->fetch_assoc())
 				{
 				
 					$html.="<tr>
-					<td>".$i."</td>
-					<td >".$ro['email']."</td>
-					<td>".$ro['book_title']."</td>
+					<td style='text-align:center'>".$i."</td>
+					<td style='text-align:center'>".$ro['email']."</td>
+					<td style='text-align:right'>".$ro['facname']."</td>
+					<td style='text-align:center'>".$ro['book_title']."</td>
+					<td style='text-align:center'>".$ro['book_acc']."</td>
 				</tr>";
 				$i++;
 
@@ -66,24 +70,30 @@ session_start();
 			
 		}
 
+		$html.="<br>--------------------------------------------------------------------------------------------------------------------------------------------------------";
+
+
 		$sql1="select * from fac_book_issue where ((issue_date between '$fro' and '$to') ) and ret_stat=0 ";
 		$res1=$db->query($sql1);
 		if($res1->num_rows>0)
 		{
-			$html.="<br><div><table style='border-collapse:collapse;width:50%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND NOT RETURNED</b></CAPTION>";
+			$html.="<br><div><table border='1' style='border-collapse:collapse;width:100%';><caption><b>BOOKS ISSUED DURING('.$fromdate.'-and'.$todate.')AND NOT RETURNED</b></CAPTION>";
 				$html.="<tr >
-					<td>SI.NO</td>
-					<td>EMAIL</td>
-					<td>TITLE</td>
-					
+					<th>SI.NO</th>
+					<th colspan='4'>EMAIL</th>
+					<th>NAME</th>
+					<th>TITLE</th>
+					<th>SFA.No</th>
 				</tr>";
 				$i=1;
 				while($rot=$res1->fetch_assoc())
 				{
 					$html.="<tr>
-					<td>".$i."</td>
-					<td >".$rot['email']."</td>
-					<td>".$rot['book_title']."</td>
+					<td style='text-align:center'>".$i."</td>
+					<td colspan='4' style='text-align:center'>".$rot['email']."</td>
+					<td style='text-align:right'>".$rot['facname']."</td>
+					<td style='text-align:center'>".$rot['book_title']."</td>
+					<td style='text-align:center'>".$rot['book_acc']."</td>
 				</tr>";
 				$i++;
 			}

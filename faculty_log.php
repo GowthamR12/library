@@ -34,7 +34,6 @@
 		}
 	?>
 	
-		<center><font size="3px">Be Careful While Entering Your Email ID</font></center>
 		<center><div class="fac">
 			<form action="" method="post">
 			<fieldset>
@@ -52,7 +51,6 @@
 			</fieldset>
 			</form>
 				
-
 		</div>
 		<?php
 			if(isset($_POST["register"]))
