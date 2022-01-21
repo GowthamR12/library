@@ -14,11 +14,15 @@
 	<title></title>
 </head>
 <body class="body" >
+	<div>
+	<a href="index.php"><button class="button">HOME</button></a>
+</div>
 	<?php
 		if(isset($_POST["login"]))
 		{
 			$slrt="select * from faculty where email='{$_POST['facemail']}' and password='{$_POST['pass']}'";
 			$rese=$db->query($slrt);
+
 			if($rese->num_rows>0)
 			{
 				$rot=$rese->fetch_array();
@@ -61,9 +65,10 @@
 				$pass=$_POST["pass"];
 
 				$sql = "insert into faculty(username,email,phoneno,password) values('$name','$email','$phone','$pass')";
+				
 				if($db->query($sql))
 				{
-					header('location:index.php?reg=Registered, Now you can login....');
+					header('location:index.php');
 				}
 				else
 				{
@@ -93,8 +98,5 @@
 		</div>
 		</font>
 	</center>
-
-
-
 </body>
 </html>

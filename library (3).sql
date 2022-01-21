@@ -1474,8 +1474,7 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 -- Dumping data for table `faculty`
 --
 
-INSERT INTO `faculty` (`fid`, `username`, `email`, `phoneno`, `password`) VALUES
-(1, 'gowtham', 'gowthamraghunathan@gmail.com', '8089964829', '1234');
+
 
 -- --------------------------------------------------------
 

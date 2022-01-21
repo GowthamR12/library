@@ -17,12 +17,11 @@
 	<input id="nav-toggle" type="checkbox">
 	
 	<ul class="links">
-		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam</a></li>
+		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam(Autonomous)</a></li>
 		<li><a href="admin_home.php">LIBRARIAN</a></li>
 		<li><a href="faculty_log.php">FACULTY</a></li>
 		<li><a href="student_log.php">STUDENT</a></li>
 			<li><a href="index.php">HOME</a></li>
-	
 	</ul>
 	<label for="nav-toggle" class="icon-burger">
 		<div class="line"></div>
@@ -44,7 +43,7 @@
 <br>
 <br>
 
-<div>
+
 	<?php
 		
 		if(isset($_POST["submit"]))
@@ -60,17 +59,20 @@
     
 
 	?>
-	<center><div>
+
+	<div>
+	<center>
 		<form action="" method="post">
 		<input tyep="text" placeholder="Search Subject" name='sea' class='input'>
 		<button type="submit" name="sub" class="button">search</button>
 		</form>
+	</center>
 		
 
 	</div>
 
-	
-			
+	<div>
+		<div>		
    <?php 
    if(isset($_POST['sub']))
    {
@@ -82,8 +84,9 @@
    	if($res->num_rows>0)
    	{
 
-   		?><div style="height: 500px;background-color:white;opacity:0.8">	
-   		<center><h1 style="color: black;background-color: white;opacity: 0.8;padding: 10px;">Search Result</h1></center>
+   		?>
+   	
+   		<!--<h1 style="color: black;background-color: white;opacity: 0.8;padding: 10px;">Search Result</h1>-->
    		<?php
    		while($ro=$res->fetch_assoc())
    		{?>
@@ -99,6 +102,8 @@
    	
    		<?php
    	}
+  
+
    	}
    	else
    	{
@@ -116,9 +121,24 @@
 
    	?>
    </div>
-	<center>
-		<div style="height: 2000px;background-color:white;opacity:0.8">
-			<center><h1 style="color: blck;background-color: white;opacity: 0.8;padding: 10px;">Choose Subject</h1></center>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div>
+	
+<div>
+	
+	<!--	<div style="height: 2000px;background-color:white;opacity:0.8">-->
+	
+			<!--<center><h1 style="color: blck;background-color: white;opacity: 0.8;padding: 10px;">Choose Subject</h1></center>-->
    
 
    <?php 
@@ -149,9 +169,9 @@
 
    	?>
    </div>
-</center>
-</div>
 
+</div>
+</div>
 <center><span style='  padding: 10px;color:white;font-family: sans-serif;font-weight: bold;font-size: 20px;position:relative;left: -250px;display:inline-block;'><?php
 
  		if(isset($_GET['reg']))

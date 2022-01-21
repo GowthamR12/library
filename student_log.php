@@ -12,7 +12,9 @@ session_start();
 </head>
 <body class="body">
 	
-
+	<div>
+	<a href="index.php"><button class="button">HOME</button></a>
+</div>
 
 	<?php
 	    /*checks for not null variables*/

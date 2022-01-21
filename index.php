@@ -17,7 +17,7 @@
 	<input id="nav-toggle" type="checkbox">
 	
 	<ul class="links">
-		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam</a></li>
+		<li><a class="logo-1" href="index.php"><img src="https://cmscollege.ac.in/wp-content/uploads/2016/10/CMS-Logo_horizontal-Low.png" height=70px width=150px><br>PG Department of Commerce(SF)<br>CMS College Kottayam(Autonomous)</a></li>
 		<li><a href="admin_home.php">LIBRARIAN</a></li>
 		<li><a href="faculty_log.php">FACULTY</a></li>
 		<li><a href="student_log.php">STUDENT</a></li>
@@ -53,6 +53,7 @@
 		<button type="submit" class="button" name="buse" >SEARCH</button>
 	
 	</form>
+
 	<form action="" method="post">
 		<button type="submit" class="button" name="veall" >VIEW ALL</button>
 		</form>
@@ -74,7 +75,9 @@
 
 
 			$sql="select * from books"; 
+			
 			$res=$db->query($sql);
+			
 			if($res->num_rows>0)
 			{?>
 				<tr>
@@ -95,7 +98,9 @@
 				<td><?php echo $ro["author"];?></td>
 				<td><?php 
 				$sqa="select * from bookacc where bfid='{$ro['bid']}'";
+
 					$rea=$db->query($sqa);
+
 					if($rea->num_rows>0)
 					{
 						while($roa=$rea->fetch_assoc())
@@ -116,7 +121,9 @@
 			?></td>
 				<td><?php 
 				$sqa="select * from bookacc where bfid='{$ro['bid']}'";
+
 					$rea=$db->query($sqa);
+					
 					if($rea->num_rows>0)
 					{
 						while($roa=$rea->fetch_assoc())
@@ -173,9 +180,12 @@
 			{
 			
 			$sql="select books.title,books.author,books.bid,bookacc.accno,books.shelfno,bookacc.isissued from books inner join bookacc on books.bid=bookacc.bfid where  author like '%{$_POST['se']}%'  or title like '%{$_POST['se']}%' or accno like '%{$_POST['se']}%'"; 
+			
 			$res=$db->query($sql);
+			
 			if($res->num_rows>0)
 			{?>
+				
 				<tr>
 			
 			<th>TITLE</th>
@@ -184,7 +194,7 @@
 			<th>NON-AVAILABLE</th>
 			<th>LOCATION</th>
 		</tr>
-<?php 
+			<?php 
 				
 				while($ro=$res->fetch_assoc())
 				{?>

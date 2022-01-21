@@ -12,6 +12,10 @@
 	<title></title>
 </head>
 <body  class="body">
+	<div>
+
+		<a href="index.php"><button class="button">HOME</button></a>
+</div>
 
 	<?php
 		/*accepts entire form values here by button name*/
