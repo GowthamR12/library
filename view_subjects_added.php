@@ -25,7 +25,14 @@ session_start();
 				header('Location:add_books.php');
 
 			}
+			else if(isset($_POST["buedit"]))
+		{
+			$_SESSION["SID"]=$_POST["chk"];
+			header('location:edit_subject.php');
+		}
 		?>
+		?>
+
 
 
 	<div style="position: relative;top:50px">
@@ -53,6 +60,8 @@ session_start();
 			
 					<input type="hidden" name="chk" value="<?php echo $ro['subid'];?>">
 					<td><button type="submit" class="button" name="acbu" style="width:250px">ADD BOOKS</button></td>
+
+					<td><button type="submit" class="bu1" name="buedit">EDIT</button></td>
 	
 		</tr>
 	</form>

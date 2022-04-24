@@ -56,7 +56,7 @@ session_start();
 <center><div class="faculty">
 	
 	<fieldset class="add_books">
-		<legend>ADD BOOK</legend>
+		<legend>ADD SUBJECT</legend>
 	<form action="" method="post">
 
 		NAME OF THE SUBJECT<input type="text" name="sub" class="input"><br>

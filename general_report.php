@@ -12,7 +12,11 @@ session_start();
 <body class="body">
 		<a href="librarian_view.php"><button class="button">HOME</button></a>
 	<div style="background-color:white;opacity:0.9">
+	<!-- 	<a href="last_transaction_faculty.php"><button class="button">LAST TRANSACTION OF FACULTY</button></a>
+		<a href="last_transaction_student.php"><button class="button">LAST TRANSACTION OF STUDENT</button></a> -->
+
 	<?php
+
 		$sql="select count(*) as count from books inner join bookacc on books.bid=bookacc.bfid";
 		$res=$db->query($sql);
 		if($res->num_rows>0)
@@ -42,6 +46,8 @@ session_start();
 		}
 
 		?>
+
+	
 	
 
 		<?php 

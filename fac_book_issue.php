@@ -74,7 +74,7 @@ session_start();
 		<br>
 	<br><br>
 		<?php
-			$sql="select * from fac_book_issue where ret_stat=0";
+			$sql="select * from fac_book_issue where ret_stat=0 order by fbid desc";
 			$res=$db->query($sql);
 			if($res->num_rows>0)
 			{?>

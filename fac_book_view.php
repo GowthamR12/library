@@ -17,6 +17,8 @@ session_start();
 	<title></title>
 </head>
 <body class="body">
+	<a href="librarian_view.php"><button class="button">HOME</button></a>
+	<a href="faculty_det.php"><button class="button">BACK</button></a>
 
 	<?php
 

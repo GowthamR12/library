@@ -23,7 +23,7 @@
 		{
 			/*selecting values from admin table in the library database*/
 			$pas=$_POST["adpass"];
-			$pass=md5($pas);
+			$pass=$pas;
 
 			$sql = "select * from admin where email='{$_POST["ademail"]}' and password='$pass'";
 
@@ -57,8 +57,7 @@
 			<br>
 			<button type="submit" class="bu1" name="adlog">SUBMIT</button><br>
 			<br>
-
-		
+			
 
 		</font>
 		</fieldset>

@@ -24,7 +24,7 @@ session_start();
 		$_SESSION["SBID"]=$sbid;
 
 	
-				$sql="select * from stud_book_issue where sbid='$sbid'";
+				$sql="select * from stud_book_issue where sbid='$sbid' ";
 				$res=$db->query($sql);
 				if($res->num_rows>0)
 				{
@@ -134,7 +134,7 @@ session_start();
 	
 
 		<?php
-			$sql="select * from stud_book_issue where ret_stat=0";
+			$sql="select * from stud_book_issue where ret_stat=0 order by sbid desc";
 			$res=$db->query($sql);
 			if($res->num_rows>0)
 			{?>

@@ -1,5 +1,5 @@
 .body{
-	background-image: url("images/raul-rosas-godmBw_gLDg-unsplash");
+	background-image: url("images/raul-rosas-godmBw_gLDg-unsplash.jpg");
 	background-size: 2000px 1000px;
 	background-repeat: :no;
 }
@@ -346,7 +346,7 @@ nav .icon-burger .line {
   border-radius: 3px;
   transition: all .3s ease-in-out;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
 
   nav .links {
     float: none;
