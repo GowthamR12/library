@@ -23,7 +23,7 @@
                 $to       = $ro["email"];
                 $subject  = 'PASSWORD';
                 $message  = $ro["password"];
-                $headers  = 'From: gowthamraghunathan@gmail.com' . "\r\n" .
+                $headers  = 'From: librarycommercesf@cmscollege.ac.in' . "\r\n" .
                 'MIME-Version: 1.0' . "\r\n" .
                 'Content-type: text/html; charset=utf-8';
 
